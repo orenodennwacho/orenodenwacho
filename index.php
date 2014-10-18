@@ -6,13 +6,12 @@
 	$errorMessage = "";
 	//	画面に表示するための特殊文字をエスケープする
 	if(isset($_POST["mailaddress"])) {
-		$viewUserId = htmlspecialchars($_POST["mailaddress"], ENT_QUOTES);
-	}
-
-	if(isset($_POST["mailaddress"])) {
-		//	認証成功
-		session_regenerate_id(TRUE);
-		$_SESSION["mailaddress"] = $_POST["mailaddress"];
+		if($_POST["mailaddress"] != "") {
+			$viewUserId = htmlspecialchars($_POST["mailaddress"], ENT_QUOTES);
+			//	認証成功
+			session_regenerate_id(TRUE);
+			$_SESSION["mailaddress"] = $_POST["mailaddress"];
+		}	
 	}
 
 html_header('備えあれば憂いなし 〜オレの電話帳〜'); ?>
